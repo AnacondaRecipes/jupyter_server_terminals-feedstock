@@ -1,5 +1,9 @@
 {% set name = "jupyter_server_terminals" %}
 {% set version = "0.4.4" %}
+# there is a test dependency on jupyter_server, but jupyter_server has
+# a runtime dependency on this package. Build first with true, then
+# after jupyter_server is available bump build number and rebuild with false.
+{% set break_cycle = true %}
 
 package:
   name: {{ name|lower }}
@@ -25,11 +29,14 @@ requirements:
     - terminado >=0.8.3
     - pywinpty >=2.0.10 # [win]
 
+{% if break_cycle %}
+test:
+{% else %}
 test:
   source_files:
     - tests
   imports:
-    - jupyter_server_terminals
+    - jupyter_server_terminals  # needs juypyter_server
   commands:
     - pip check
     - pytest -vv --cov=jupyter_server_terminals --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=80
@@ -40,6 +47,7 @@ test:
     - pytest-cov
     - pytest-jupyter-server >=0.5.3
     - pytest-timeout
+{% endif %}
 
 about:
   home: https://github.com/jupyter-server/jupyter_server_terminals
@@ -50,7 +58,7 @@ about:
   description: Jupyter Server Terminals is a Jupyter Server Extension providing support for terminals.
   doc_url: https://github.com/jupyter-server/jupyter_server_terminals#readme
   dev_url: https://github.com/jupyter-server/jupyter_server_terminals
-  
+
 extra:
   recipe-maintainers:
     - conda-forge/jupyter_server
