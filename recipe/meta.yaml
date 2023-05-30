@@ -3,7 +3,7 @@
 # there is a test dependency on jupyter_server, but jupyter_server has
 # a runtime dependency on this package. Build first with true, then
 # after jupyter_server is available bump build number and rebuild with false.
-{% set break_cycle = true %}
+{% set break_cycle = false %}
 
 package:
   name: {{ name|lower }}
