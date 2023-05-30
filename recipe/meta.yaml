@@ -16,7 +16,9 @@ source:
 build:
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
   number: 0
-  skip: true # [py<38]
+  # This package has a test dependency on jupyter_server, but that is
+  # unavailable on s390x because of rust toolchain issues.
+  skip: true # [py<38 or s390x]
 
 requirements:
   host:
@@ -42,7 +44,9 @@ test:
     - pytest -vv --cov=jupyter_server_terminals --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under=80
   requires:
     - jupyter_server >=2.0.0rc8
+    - m2-bash # [win]
     - pip
+    - posix # [win]
     - pytest >=7.0
     - pytest-cov
     - pytest-jupyter-server >=0.5.3
