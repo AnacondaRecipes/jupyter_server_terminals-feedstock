@@ -15,7 +15,7 @@ source:
 
 build:
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  number: 0
+  number: 1
   # This package has a test dependency on jupyter_server, but that is
   # unavailable on s390x because of rust toolchain issues.
   skip: true # [py<38 or s390x]
