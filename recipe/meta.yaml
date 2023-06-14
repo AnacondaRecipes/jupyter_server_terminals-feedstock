@@ -29,7 +29,7 @@ requirements:
   run:
     - python
     - terminado >=0.8.3
-    - pywinpty >=2.0.10 # [win]
+    - pywinpty >=2.0.10  # [win]
 
 {% set suppressed_tests = "" %}
 {% set min_cov = 80 %}
