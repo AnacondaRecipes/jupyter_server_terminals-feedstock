@@ -35,7 +35,7 @@ requirements:
 {% set min_cov = 80 %}
 
 # Some tests fail in CI, apparently due to quirks around running from cygwin, not from pwsh or cmd
-{% set suppressed_tests = "-k \"not (test_authorized_requests or test_terminal_create or test_terminal_create_with_kwargs or test_terminal_create_with_cwd)\"" %} # [win]
+{% set suppressed_tests = "-k \"not (test_authorized_requests or test_terminal_create or test_terminal_create_with_kwargs or test_terminal_create_with_cwd)\"" %}  # [win]
 {% set min_cov = 50 %}  # [win]
 
 {% if break_cycle %}
