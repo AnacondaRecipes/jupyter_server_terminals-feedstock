@@ -53,7 +53,7 @@ test:
     - jupyter_server >=2.0.0rc8
     - m2-bash  # [win]
     - pip
-    - posix # [win]
+    - posix  # [win]
     - pytest >=7.0
     - pytest-cov
     - pytest-jupyter-server >=0.5.3
