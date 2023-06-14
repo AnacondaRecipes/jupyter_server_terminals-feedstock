@@ -51,7 +51,7 @@ test:
     - pytest -vv {{ suppressed_tests }} --cov=jupyter_server_terminals --cov-report=term-missing:skip-covered --no-cov-on-fail --cov-fail-under={{ min_cov }}
   requires:
     - jupyter_server >=2.0.0rc8
-    - m2-bash # [win]
+    - m2-bash  # [win]
     - pip
     - posix # [win]
     - pytest >=7.0
