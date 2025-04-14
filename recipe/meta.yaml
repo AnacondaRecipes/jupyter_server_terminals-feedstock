@@ -1,5 +1,5 @@
 {% set name = "jupyter_server_terminals" %}
-{% set version = "0.4.4" %}
+{% set version = "0.5.3" %}
 # there is a test dependency on jupyter_server, but jupyter_server has
 # a runtime dependency on this package. Build first with true, then
 # after jupyter_server is available bump build number and rebuild with false.
@@ -11,14 +11,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 57ab779797c25a7ba68e97bcfb5d7740f2b5e8a83b5e8102b10438041a7eac5d
+  sha256: 5ae0295167220e9ace0edcfdb212afd2b01ee8d179fe6f23c899590e9b8a5269
 
 build:
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  number: 1
-  # This package has a test dependency on jupyter_server, but that is
-  # unavailable on s390x because of rust toolchain issues.
-  skip: true # [py<38 or s390x]
+  number: 0
+  skip: true # [py<38]
 
 requirements:
   host:
