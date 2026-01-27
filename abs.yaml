@@ -4,3 +4,4 @@ build_env_vars:
 channels:
   - https://staging.continuum.io/pbp/fs/winpty-feedstock/pr1/b2a6657
   - https://staging.continuum.io/pbp/fs/pywinpty-feedstock/pr17/70624da
+  - https://staging.continuum.io/pbp/fs/terminado-feedstock/pr14/19b7cf8
