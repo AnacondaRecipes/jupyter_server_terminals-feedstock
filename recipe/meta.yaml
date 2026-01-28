@@ -3,7 +3,7 @@
 # there is a test dependency on jupyter_server, but jupyter_server has
 # a runtime dependency on this package. Build first with true, then
 # after jupyter_server is available bump build number and rebuild with false.
-{% set break_cycle = false %}
+{% set break_cycle = true %}
 
 package:
   name: {{ name|lower }}
@@ -14,9 +14,9 @@ source:
   sha256: 5ae0295167220e9ace0edcfdb212afd2b01ee8d179fe6f23c899590e9b8a5269
 
 build:
-  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  number: 0
+  number: 1
   skip: true # [py<38]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
